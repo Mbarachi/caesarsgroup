@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Hero from "./components/Hero";
+import ServicesSection from "./components/ServicesSection";
+import PartnersSection from "./components/PartnersSection";
+import TeamSection from "./components/TeamSection";
+import CTASection from "./components/CTASection";
+import Footer from "./components/Footer";
+import "./index.css";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
+import SavingsCalculator from "./components/SavingsCalculator";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="flex flex-col min-h-screen bg-white text-gray-900">
+        {/* Header */}
+        <Header />
+        {/* Main Page Content */}
+        <main className="flex flex-1 justify-center py-8">
+          <div className="w-full max-w-7xl px-4">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/savings-calculator" element={<SavingsCalculator />} />
+            </Routes>
+          </div>
+        </main>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
