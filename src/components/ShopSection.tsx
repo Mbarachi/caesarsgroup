@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import streetLightImage from "../assets/street_light.jpeg";
 import streetSweeperImage from "../assets/sweepers.jpeg";
+import EVImage from "../assets/EV.jpeg";
+
 const ShopSection = () => {
     const products = [
         {
@@ -24,13 +26,13 @@ const ShopSection = () => {
             image: streetSweeperImage,
         },
         {
-            title: "Smart Integration",
+            title: "Electric Vehicle",
             description:
-                "Seamlessly integrate your renewable energy system with smart home technology for full control.",
-            image:
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuC1AdYYPr0d5VERIzJBGmS8511lmPoQ7ZaLfQMvRyGe-PxqcIPtqdpIHkbrPf0utMT1iGvrMflLU0zj2vEnzO8I-0LMBps-6YStB-VD620phlX2ZZv-nLDmU8tv9bxZrgbnngArgfu6jCDtqnTtkipeWUpl2L9QpCG3LiCli1bKtDnC8LEEpeuC6sxCHXjOq15XSygscBtwatgzALczobpHj19QXJsT2uIYI7BE-kT82JFO_upeXlFLZfAw7_3n6tJAkO_S7uWsPnMV",
+                "Wholesale supply of EVs for commercial and personal use, promoting sustainable transportation solutions.",
+            image: EVImage,
         },
     ];
+
     return (
         <main className="flex-grow container mx-auto px-6 py-12">
             <div className="text-center mb-12">

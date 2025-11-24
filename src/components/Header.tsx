@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
 import { Menu } from "lucide-react";
-import { ModeToggle } from "./ModeToggle";
 import logo from "../assets/caesar_white.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +12,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-primary/20 px-10 py-4 bg-white dark:bg-background-dark">
       {/* Logo Section */}
-      <div className="flex items-center gap-2 text-gray-800 dark:text-white">
+      <div className="flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer" onClick={() => navigate("/")}>
         <img src={logo}
           alt="Caesar Energy Logo"
           className="h-14 mr-3"
@@ -30,7 +29,6 @@ const Header = () => {
             "Our Services",
             "Shop",
             "Our Team",
-            "Partners",
           ].map((item) => (
             <a
               key={item}
@@ -41,7 +39,6 @@ const Header = () => {
             </a>
           ))}
         </nav>
-        <ModeToggle />
 
         <Button className="bg-primary hover:bg-primary/90 font-bold text-white rounded-[0.5rem]" onClick={() => navigate("/savings-calculator")}>
           Savings Calculator

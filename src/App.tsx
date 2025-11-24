@@ -1,9 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Hero from "./components/Hero";
-import ServicesSection from "./components/ServicesSection";
-import PartnersSection from "./components/PartnersSection";
-import TeamSection from "./components/TeamSection";
-import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 import "./index.css";
 import Home from "./pages/Home";
