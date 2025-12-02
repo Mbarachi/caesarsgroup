@@ -1,8 +1,10 @@
 import { motion } from "framer-motion"
 import { Button } from "./ui/button"
 import heroImage from "../assets/solar_hero.jpg"
+import { useNavigate } from "react-router-dom"
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="@container">
       <div
@@ -41,6 +43,7 @@ const Hero = () => {
           <Button
             size="lg"
             className="mt-6 bg-primary text-white hover:bg-primary/90"
+            onClick={() => navigate("/about")}
           >
             Learn More
           </Button>

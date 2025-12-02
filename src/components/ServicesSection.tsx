@@ -52,7 +52,7 @@ const ServicesSection = () => {
     },
   ];
   return (
-    <section className="flex flex-col gap-8 mt-10">
+    <section className="flex flex-col gap-8">
       {/* Header */}
       <motion.div
         className="flex flex-col gap-2"
@@ -61,13 +61,15 @@ const ServicesSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white @[480px]:text-4xl">
-          Our Services
-        </h2>
-        <p className="max-w-3xl text-base text-gray-600 dark:text-gray-300">
-          We offer a comprehensive suite of renewable energy solutions tailored
-          to meet your specific needs.
-        </p>
+        <div className="text-center">
+          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Services
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            We offer a comprehensive suite of renewable energy solutions tailored
+            to meet your specific needs.
+          </p>
+        </div>
       </motion.div>
 
       {/* Services Grid */}

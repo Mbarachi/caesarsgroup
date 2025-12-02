@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
 import { Menu } from "lucide-react";
 import logo from "../assets/caesar_white.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -25,18 +25,20 @@ const Header = () => {
       <div className="hidden md:flex items-center gap-6 flex-1 justify-end">
         <nav className="flex items-center gap-6">
           {[
-            "About Us",
-            "Our Services",
-            "Shop",
-            "Our Team",
-          ].map((item) => (
-            <a
-              key={item}
-              href="#"
+            { label: "Home", to: "/" },
+            { label: "About", to: "/about" },
+            { label: "Services", to: "/services" },
+            { label: "Shop", to: "/#shop" },
+            { label: "Team", to: "/about#team" },
+            { label: "Contact", to: "/contact" },
+          ].map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
               className="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
             >
-              {item}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </nav>
 
@@ -56,22 +58,23 @@ const Header = () => {
           <SheetContent side="right" className="bg-white dark:bg-background-dark">
             <div className="flex flex-col gap-6 mt-10">
               {[
-                "About Us",
-                "Our Services",
-                "Shop",
-                "Our Team",
-                "Partners",
-              ].map((item) => (
-                <a
-                  key={item}
-                  href="#"
+                { label: "About", to: "/about" },
+                { label: "Services", to: "/services" },
+                { label: "Shop", to: "/#shop" },
+                { label: "Team", to: "/about#team" },
+                { label: "Partners", to: "/#partners" },
+                { label: "Contact", to: "/contact" },
+              ].map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.to}
                   className="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition"
                   onClick={() => setOpen(false)}
                 >
-                  {item}
-                </a>
+                  {link.label}
+                </Link>
               ))}
-              <Button className="bg-primary hover:bg-primary/90 font-bold text-white w-full">
+              <Button className="bg-primary hover:bg-primary/90 font-bold text-white w-full" onClick={() => { setOpen(false); navigate('/savings-calculator'); }}>
                 Savings Calculator
               </Button>
             </div>
