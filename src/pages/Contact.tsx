@@ -72,7 +72,7 @@ export default function Contact() {
                 </p>
                 <p className="flex items-center gap-3">
                   <Phone className="text-primary h-5 w-5" />
-                  <span>Phone: +353 83 009 5716</span>
+                  <span>Phone: +234 8164046861, +353830095716</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <Mail className="text-primary h-5 w-5" />

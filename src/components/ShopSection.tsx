@@ -3,6 +3,7 @@ import { Card, CardContent } from "./ui/card";
 import streetLightImage from "../assets/street_light.jpeg";
 import streetSweeperImage from "../assets/sweepers.jpeg";
 import EVImage from "../assets/EV.jpeg";
+import { Link } from "react-router";
 
 const ShopSection = () => {
     const products = [
@@ -75,12 +76,12 @@ const ShopSection = () => {
                                         {product.description}
                                     </p>
                                 </div>
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/shop"
                                     className="inline-block mt-4 text-sm font-bold text-primary hover:underline"
                                 >
                                     Learn More →
-                                </a>
+                                </Link>
                             </CardContent>
                         </Card>
                     </motion.div>

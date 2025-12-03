@@ -23,8 +23,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="text-2xl font-extrabold tracking-tighter @[480px]:text-5xl">
-            Powering a Sustainable Future
+          <h1 className="text-3xl font-extrabold tracking-tighter @[480px]:text-5xl">
+            Power the Future with us
           </h1>
 
           <p className="text-base font-normal text-white/90 @[480px]:text-lg">

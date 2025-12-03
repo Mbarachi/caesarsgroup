@@ -28,8 +28,8 @@ const Header = () => {
             { label: "Home", to: "/" },
             { label: "About", to: "/about" },
             { label: "Services", to: "/services" },
-            { label: "Shop", to: "/#shop" },
-            { label: "Team", to: "/about#team" },
+            { label: "Shop", to: "/shop" },
+            { label: "Team", to: "/team" },
             { label: "Contact", to: "/contact" },
           ].map((link) => (
             <Link

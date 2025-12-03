@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
@@ -10,6 +10,8 @@ export default function SavingsCalculator() {
   const [roofSize, setRoofSize] = useState<number | undefined>()
   const [sunlight, setSunlight] = useState<string>("")
   const [savings, setSavings] = useState<number | null>(null)
+  const [celebrate, setCelebrate] = useState(false)
+  const resultRef = useRef<HTMLDivElement | null>(null)
 
   const calculateSavings = () => {
     if (!bill || !roofSize || !sunlight) return
@@ -17,7 +19,21 @@ export default function SavingsCalculator() {
     const multiplier =
       sunlight === "full" ? 0.5 : sunlight === "partial" ? 0.35 : 0.2
     const estimate = bill * multiplier
-    setSavings(Math.round(estimate * 12))
+    const result = Math.round(estimate * 12)
+    setSavings(result)
+    // trigger celebration animation
+    setCelebrate(false)
+    requestAnimationFrame(() => setCelebrate(true))
+    // scroll to result if it's not visible
+    requestAnimationFrame(() => {
+      const el = resultRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const inView = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      if (!inView) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" })
+      }
+    })
   }
 
   return (
@@ -120,19 +136,63 @@ export default function SavingsCalculator() {
         {/* Result Section */}
         {savings !== null && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
             className="mt-10 text-center"
+            ref={resultRef}
           >
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Your Estimated Savings
             </h2>
-            <div className="bg-primary/10 dark:bg-primary/20 p-8 rounded-xl inline-block">
-              <p className="text-sm text-primary font-medium">Annual Savings</p>
-              <p className="text-5xl font-bold text-primary mt-2">
-                ₦{savings.toLocaleString()}
-              </p>
+
+            {/* Celebratory card with glow */}
+            <div className="relative inline-block">
+              {/* glow layers */}
+              <motion.div
+                className="pointer-events-none absolute -inset-8 rounded-[2.2rem] bg-gradient-to-br from-purple-300/40 via-pink-300/40 to-amber-300/40 blur-3xl"
+                animate={celebrate ? { opacity: [0.25, 0.6, 0.25] } : { opacity: 0.25 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="pointer-events-none absolute -inset-3 rounded-[1.8rem] bg-primary/50 blur-xl"
+                animate={celebrate ? { opacity: [0.2, 0.35, 0.2] } : { opacity: 0.2 }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              {/* fireworks sparks */}
+              {celebrate && (
+                <div className="pointer-events-none absolute inset-0 z-10">
+                  {[...Array(20)].map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full"
+                      style={{ transform: "translate(-50%, -50%)", backgroundColor: ["#FFFFFF","#F59E0B","#EC4899","#6366F1"][i % 4] }}
+                      initial={{ opacity: 0, x: 0, y: 0, scale: 0.9 }}
+                      animate={{
+                        opacity: [0, 1, 0],
+                        x: (Math.cos((i / 20) * Math.PI * 2) * (110 + (i % 5) * 10)),
+                        y: (Math.sin((i / 20) * Math.PI * 2) * (110 + (i % 5) * 10)),
+                        scale: [0.9, 1.4, 0.9],
+                      }}
+                      transition={{ duration: 1.6, delay: i * 0.03, ease: "easeOut" }}
+                    />
+                  ))}
+                </div>
+              )}
+
+              <div className="relative z-20 bg-primary/10 dark:bg-primary/20 px-10 py-8 rounded-2xl ring-2 ring-primary/40 shadow-lg">
+                <p className="text-sm text-primary font-medium">Annual Savings</p>
+                <motion.p
+                  className="text-5xl font-extrabold text-primary mt-2 tracking-tight"
+                  initial={{ scale: 0.98 }}
+                  animate={celebrate ? { scale: [1, 1.06, 1] } : { scale: 1 }}
+                  transition={{ duration: 0.9, ease: "easeInOut" }}
+                >
+                  ₦{savings.toLocaleString()}
+                </motion.p>
+              </div>
             </div>
+
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-6 max-w-md mx-auto">
               This is an estimate based on your inputs. Actual savings may vary depending on your
               energy consumption and solar system configuration.
