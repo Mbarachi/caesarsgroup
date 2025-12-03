@@ -58,9 +58,9 @@ export default function ProductShowcase({ title, subtitle, images, features = []
             key={src}
             src={src}
             alt={`${title} view ${i + 1}`}
-            className="absolute inset-0 h-full w-full object-cover"
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: i === index ? 1 : 0, scale: i === index ? 1 : 1.02 }}
+            className="absolute inset-0 h-full w-full object-contain object-center"
+            initial={{ opacity: 0, scale: 1.005 }}
+            animate={{ opacity: i === index ? 1 : 0, scale: i === index ? 1 : 1.005 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           />
         ))}
@@ -109,10 +109,10 @@ export default function ProductShowcase({ title, subtitle, images, features = []
       <div className="p-6 md:p-8">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900">{title}</h3>
-            {subtitle && <p className="text-gray-600 mt-1">{subtitle}</p>}
+            <h3 className="text-lg md:text-lg font-bold text-gray-900">{title}</h3>
+            {subtitle && <p className="text-gray-600 mt-1 text-sm">{subtitle}</p>}
           </div>
-          {price && <div className="text-right"><p className="text-sm text-gray-500">From</p><p className="text-lg font-semibold">{price}</p></div>}
+          {/* {price && <div className="text-right"><p className="text-sm text-gray-500">From</p><p className="text-lg font-semibold">{price}</p></div>} */}
         </div>
 
         {features.length > 0 && (
@@ -126,8 +126,7 @@ export default function ProductShowcase({ title, subtitle, images, features = []
           </ul>
         )}
 
-        <div className="mt-6 flex flex-col sm:flex-row gap-3">
-          <Button className="w-full sm:w-auto">Add to Quote</Button>
+        <div className="mt-6 flex flex-col gap-3">
           <Button variant="outline" className="w-full sm:w-auto" onClick={onEnquire}>Enquire</Button>
         </div>
       </div>
