@@ -38,8 +38,8 @@ export default function Team() {
                 {compact ? (
                     <div className="mt-10 grid grid-cols-3 gap-2">
                         <Tile member={members[0]} onClick={() => setActive(members[0])} />
-                        <Tile member={members[1]} onClick={() => setActive(members[1])} />
                         <TextureTile variant="diagonal" />
+                        <Tile member={members[1]} onClick={() => setActive(members[1])} />
                         <CtaTile title="AGENCY" subtitle="LEADERSHIP" tone="light" />
                         <Tile member={members[2]} onClick={() => setActive(members[2])} />
                         <CtaTile title="MEET THE" subtitle="TEAM" tone="solid" />
@@ -126,27 +126,31 @@ function Tile({ member, onClick }: { member?: Member; onClick: () => void }) {
     );
 }
 
-function CtaTile({ title, subtitle, tone }: { title: string; subtitle: string; tone: "light" | "solid" }) {
+function CtaTile({ title, subtitle, tone, onClick }: { title: string; subtitle: string; tone: "light" | "solid"; onClick?: () => void }) {
     if (tone === "light") {
         return (
-            <div className="relative aspect-square rounded-md overflow-hidden border border-black/10">
+            <button onClick={onClick} className="relative aspect-square rounded-md overflow-hidden border border-black/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300/40">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100" />
                 <div className="relative z-10 h-full w-full flex flex-col items-center justify-center gap-1 text-center p-4">
                     <p className="text-orange-600 font-bold tracking-wide text-xs md:text-sm">{title}</p>
                     <h3 className="text-lg md:text-xl font-extrabold text-gray-900">{subtitle}</h3>
-                    <Button variant="outline" className="mt-2 border-orange-600 text-orange-600 px-3 py-1">View</Button>
+                    {/* <Button variant="outline" className="mt-2 border-orange-600 text-orange-600 px-3 py-1">View</Button> */}
+                    {/* subtle chevron hint */}
+                    <motion.span initial={{ x: 0, opacity: 0 }} whileHover={{ x: 4, opacity: 1 }} className="mt-1 text-orange-600">→</motion.span>
                 </div>
-            </div>
+            </button>
         );
     }
     return (
-        <div className="relative aspect-square rounded-md overflow-hidden border border-black/10">
+        <button onClick={onClick} className="relative aspect-square rounded-md overflow-hidden border border-black/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300/40">
             <div className="absolute inset-0 bg-orange-500" />
+            <div className="absolute inset-0 opacity-0 hover:opacity-10 transition bg-white" />
             <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center p-4 text-white">
                 <h3 className="text-lg md:text-xl font-extrabold leading-tight">{title}<br />{subtitle}</h3>
-                <Button variant="outline" className="mt-2 border-white text-white px-3 py-1">Explore</Button>
+                {/* <Button variant="outline" className="mt-2 border-white text-white px-3 py-1">Explore</Button> */}
+                <motion.span initial={{ x: 0, opacity: 0 }} whileHover={{ x: 4, opacity: 1 }} className="mt-1">→</motion.span>
             </div>
-        </div>
+        </button>
     );
 }
 
