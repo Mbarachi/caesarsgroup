@@ -1,5 +1,6 @@
 import { Separator } from "./ui/separator"
 import darkLogo from "../assets/caesar_footer-logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -11,31 +12,31 @@ const Footer = () => {
             <img src={darkLogo} className="w-[5rem]" alt="Caesars Energy Logo" />
             <span className="text-gray-600 dark:text-gray-400 text-sm">
               © 2025 Caesars Energy. All rights reserved.
-            </span>
+            </span>/
           </div>
 
           {/* Right Section */}
           <div className="flex items-center gap-6">
-            <a
-              href="#"
+            <Link
+              to=""
               className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
             <Separator orientation="vertical" className="h-4 hidden md:block" />
-            <a
-              href="#"
+            <Link
+              to=""
               className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               Terms of Service
-            </a>
+            </Link>
             <Separator orientation="vertical" className="h-4 hidden md:block" />
-            <a
-              href="#"
+            <Link
+              to="/contact"
               className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </div>
