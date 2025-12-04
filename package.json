@@ -2,6 +2,7 @@
   "name": "caesars",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Mbarachi.github.io/caesarsgroup",
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.7",
@@ -35,7 +36,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev:css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    "dev:css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +61,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "gh-pages": "^6.1.1"
   }
 }
