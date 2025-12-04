@@ -112,8 +112,9 @@ export default function SavingsCalculator() {
             <div className="pt-4">
               <Button
                 type="button"
+                size="lg"
                 onClick={calculateSavings}
-                className="w-full py-4 text-base font-semibold flex items-center justify-center gap-2"
+                className="w-full text-base font-semibold rounded-full shadow-md shadow-primary/25 hover:shadow-primary/35 hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2"
               >
                 <span>Calculate Savings</span>
                 <svg
