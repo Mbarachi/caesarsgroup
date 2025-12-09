@@ -18,7 +18,7 @@ export default function PayAsYouGoPromo() {
       {/* Section heading above promo card */}
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 mb-4">Flexible Pay-As-You-Go</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">Start with only 30% upfront and enjoy clean, reliable power while spreading the balance over 12 easy months.</p>
+        <p className="text-gray-600 max-w-2xl mx-auto">Start with only 30% upfront payment and enjoy clean, reliable power while spreading the balance over 12 easy months.</p>
       </div>
 
       <div className="max-w-7xl mx-auto">

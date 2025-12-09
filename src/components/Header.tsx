@@ -18,7 +18,7 @@ const Header = () => {
           className="h-14 mr-3"
           loading="lazy"
         />
-        <h2 className="text-lg font-bold">Caesars Energy Services</h2>
+        <h2 className="text-lg font-bold brand-serif uppercase tracking-wide">Caesars Energy Services</h2>
       </div>
 
       {/* Desktop Navigation */}
@@ -60,9 +60,8 @@ const Header = () => {
               {[
                 { label: "About", to: "/about" },
                 { label: "Services", to: "/services" },
-                { label: "Shop", to: "/#shop" },
-                { label: "Team", to: "/about#team" },
-                { label: "Partners", to: "/#partners" },
+                { label: "Shop", to: "/shop" },
+                { label: "Team", to: "/team" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (
                 <Link

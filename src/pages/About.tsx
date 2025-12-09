@@ -8,7 +8,7 @@ export default function About() {
       <section className="py-10 md:py-15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900">About Caesars Energy</h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900">About Caesars Energy Services</h2>
             <p className="mt-4 text-lg text-gray-600">
               Powering a greener future with innovative, cost effective off-grid and hybrid solar solutions for everyday people.
             </p>
@@ -59,13 +59,13 @@ export default function About() {
             <div className="prose prose-lg max-w-none text-gray-800">
               <h3 className="text-2xl font-bold text-gray-900">Our Team</h3>
               <p>
-                Our team comprises experienced engineers, technicians, project managers, and customer service professionals who are passionate about renewable energy. We foster a collaborative and inclusive work environment, where every team member is valued and empowered to contribute their expertise. Our collective knowledge and dedication ensure that we deliver exceptional results for our clients.
+                Our team comprises experienced and certified engineers, technicians, project managers, and customer service professionals who are passionate about renewable energy. We foster a collaborative and inclusive work environment, where every team member is valued and empowered to contribute their expertise. Our collective knowledge and dedication ensure that we deliver exceptional results for our clients.
               </p>
             </div>
             <div className="prose prose-lg max-w-none text-gray-800">
               <h3 className="text-2xl font-bold text-gray-900">Community Involvement</h3>
               <p>
-                We believe in giving back to the communities we serve. Caesars Energy actively supports local initiatives and organizations that promote environmental sustainability, education, and community development. We are proud to be a responsible corporate citizen and contribute to a better future for all.
+                We believe in giving back to the communities we serve. Caesars Energy Services actively supports local initiatives and organizations that promote environmental sustainability, education, and community development. We are proud to be a responsible corporate citizen and contribute to a better future for all.
               </p>
             </div>
           </div>

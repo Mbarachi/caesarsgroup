@@ -76,7 +76,7 @@ export default function Contact() {
                 </p> */}
                 <p className="flex items-start gap-3">
                   <MapPin className="text-primary mt-1 h-5 w-5" />
-                  <span>Address: 5th Avenue, K close, Festac Town, Lagos</span>
+                  <span>Address: 5th Avenue, K close, Festac Town, Lagos Nigeria</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <Phone className="text-primary h-5 w-5" />

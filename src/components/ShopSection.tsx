@@ -23,7 +23,7 @@ const ShopSection = () => {
         {
             title: "Street Sweepers",
             description:
-                "Advanced energy storage solutions to maximize your use of renewable energy, day and night.",
+                "Street sweepers that offer the best results in the field of industrial indoor & outdoor cleaning. Thanks to their ultra-compact design and hydraulic mechanisms, they are extremely maneuverable, easy and pleasant to drive",
             image: streetSweeperImage,
         },
         {

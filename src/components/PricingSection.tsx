@@ -21,8 +21,8 @@ type Package = {
 const packages: Package[] = [
   {
     title: "Inverter System Package\nEconomy",
-    capacity: "2.7KVA",
-    batteries: "2 Deep cycle Batteries",
+    capacity: "3KVA",
+    batteries: "2 Deep cycle Batteries, (3KVA Inverter)",
     willPower: [
       "12+ lights",
       "Fans",
@@ -40,7 +40,7 @@ const packages: Package[] = [
   {
     title: "Inverter System Package\nEconomy Plus +",
     capacity: "5KVA",
-    batteries: "4 Deep cycle Batteries",
+    batteries: "4 Deep cycle Batteries, (5KVA Inverter)",
     willPower: [
       "14+ lights",
       "Fans",
@@ -58,7 +58,7 @@ const packages: Package[] = [
   },
   {
     title: "Solar System Package\nEconomy",
-    capacity: "2.7KVA",
+    capacity: "3.6KVA",
     batteries: "2 Deep cycle Batteries",
     willPower: [
       "12+ lights",
@@ -150,7 +150,7 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900">
-            Which Package Suits Your Needs?
+            What Package Suits Your Needs?
           </h2>
           <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
             Flexible, reliable and efficient power packages tailored for homes and small businesses.

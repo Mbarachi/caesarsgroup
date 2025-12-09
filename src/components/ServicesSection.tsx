@@ -21,7 +21,7 @@ const ServicesSection = () => {
     {
       title: "Solar Street Lighting & Pump Installation",
       description:
-        "With the help of our partners, We have Installed over 250 Units All in one Solar street lightning across communities and schools in Oyo & Benue states respectively.Project approved by the Federal Ministry of Agriculture & Rural development",
+        "We have Installed over 250 Units All in one Solar street lightning across communities and schools in Oyo & Benue states respectively.Project approved by the Federal Ministry of Agriculture & Rural development",
       icon: (
         <svg
           fill="currentColor"
@@ -35,9 +35,9 @@ const ServicesSection = () => {
       ),
     },
     {
-      title: "Mini Grids for Data Centers",
+      title: "Mini Interconnected Grids for Data Centers and Communities",
       description:
-        "Trust us to power your data centres with reliable, scalable solutions that operate independently of the main grid. Reduce operational costs and your carbon footprint through efficient, renewable-integrated systems designed for seamless 24/7 performance..",
+        "Trust us to power your data centres and communities with reliable, scalable solutions that operate independently of the main grid. Reduce operational costs and your carbon footprint through efficient, renewable-integrated systems designed for seamless 24/7 performance..",
       icon: (
         <svg
           fill="currentColor"

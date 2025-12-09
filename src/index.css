@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Brand serif for header title */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+.brand-serif {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.04em;
+}
+
 html {
   scroll-behavior: smooth;
 }
