@@ -62,7 +62,7 @@ const Header = () => {
                 { label: "About", to: "/about" },
                 { label: "Services", to: "/services" },
                 { label: "Shop", to: "/shop" },
-                { label: "Team", to: "/team" },
+                // { label: "Team", to: "/team" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (
                 <Link
