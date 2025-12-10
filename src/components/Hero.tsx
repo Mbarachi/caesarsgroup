@@ -18,12 +18,12 @@ const Hero = () => {
       >
         {/* Animate the hero text */}
         <motion.div
-          className="flex max-w-2xl flex-col gap-4"
+          className="flex w-full flex-col gap-4"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="text-2xl @[480px]:text-5xl font-extrabold tracking-tight @[480px]:tracking-tighter leading-tight flex items-baseline gap-2 whitespace-nowrap @[480px]:whitespace-normal">
+          <h1 className="text-[clamp(1.125rem,5.0vw,2.75rem)] @[480px]:text-[clamp(1.5rem,3.8vw,2.875rem)] font-extrabold tracking-tight @[480px]:tracking-tighter leading-none flex items-baseline gap-1 whitespace-nowrap">
             {/* Keep the word 'POWER' together with custom O */}
             <span className="inline-flex items-baseline whitespace-nowrap">
               <span className="uppercase leading-none">P</span>
@@ -45,7 +45,7 @@ const Hero = () => {
             <span className="uppercase leading-none">THE FUTURE WITH US</span>
           </h1>
 
-          <p className="text-base font-normal text-white/90 @[480px]:text-lg">
+          <p className="text-base font-normal text-white/90 @[480px]:text-lg max-w-[65ch]">
             Caesars energy services is committed to promoting renewable energy solutions to the everyday man with
             leading innovative projects that power a greener future with solar, bio energy and other cost
             effective off-grid solutions.

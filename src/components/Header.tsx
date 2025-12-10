@@ -12,13 +12,13 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-primary/20 px-8 py-4 bg-white dark:bg-background-dark">
       {/* Logo Section */}
-      <div className="flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer" onClick={() => navigate("/")}>
+      <div className="flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer min-w-0" onClick={() => navigate("/") }>
         <img src={logo}
           alt="Caesar Energy Logo"
           className="h-14 mr-1"
           loading="lazy"
         />
-        <h2 className="text-sm sm:text-base md:text-lg font-bold brand-serif uppercase tracking-wide leading-tight">Caesars Energy Services</h2>
+        <h2 className="text-xs sm:text-sm md:text-lg font-bold brand-serif uppercase tracking-wide leading-tight pr-2 md:pr-0 max-w-[62vw] md:max-w-none truncate">Caesars Energy Services</h2>
       </div>
 
       {/* Desktop Navigation */}
