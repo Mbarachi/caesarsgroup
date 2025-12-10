@@ -37,7 +37,7 @@ export default function Shop() {
             images: [
                 deepCycleImg,
             ],
-            features: ["Anti-PID", "Hail-resistant", "25-year warranty"],
+            features: ["Anti-PID", "Hail-resistant", "6 years warranty"],
             price: "₦—",
         },
         {

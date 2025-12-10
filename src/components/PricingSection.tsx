@@ -59,12 +59,13 @@ const packages: Package[] = [
   {
     title: "Solar System Package\nEconomy",
     capacity: "3.6KVA",
-    batteries: "2 Deep cycle Batteries",
+    batteries: "2 Deep cycle Batteries • 2×585 watts solar panels",
     willPower: [
       "12+ lights",
       "Fans",
       "Computers",
       "Inverter Refrigerator",
+      "Inverter Air Conditioner",
     ],
     price: "₦1,855,750",
     theme: {
@@ -112,8 +113,8 @@ function PackageCard({ pkg }: { pkg: Package }) {
         <div className="px-6 pt-2 text-white/90 text-sm">{pkg.batteries}</div>
 
         {/* Will power */}
-        <div className="mt-4 mx-6 rounded-xl bg-white/10 backdrop-blur-sm p-4">
-          <div className="text-white/90 text-xs font-semibold mb-2">Will Power:</div>
+        <div className="mt-4 mb-4 mx-6 rounded-xl bg-white/10 backdrop-blur-sm p-4">
+          <div className="text-white font-semibold mb-2 text-sm">It will power:</div>
           <ul className="space-y-2">
             {pkg.willPower.map((item) => (
               <li key={item} className="flex items-center gap-2 text-white">
@@ -122,6 +123,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
               </li>
             ))}
           </ul>
+          
         </div>
 
         {/* Bottom bar with price and CTA */}

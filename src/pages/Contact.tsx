@@ -1,9 +1,11 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Linkedin } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
 export default function Contact() {
+  const [state, handleSubmit] = useForm("xeoyrzze");
   return (
     <main className="flex-grow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -17,7 +19,7 @@ export default function Contact() {
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Form */}
           <div className="bg-background-light p-8 rounded-xl shadow-lg">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label htmlFor="name" className="text-black/80">Name</Label>
                 <div className="mt-1">
@@ -30,6 +32,7 @@ export default function Contact() {
                 <div className="mt-1">
                   <Input id="email" name="email" type="email" placeholder="Your Email" autoComplete="email" required />
                 </div>
+                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
 
               <div>
@@ -51,6 +54,7 @@ export default function Contact() {
                     required
                   />
                 </div>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
 
               <div>
@@ -58,10 +62,19 @@ export default function Contact() {
                   type="submit"
                   size="lg"
                   className="w-full font-bold rounded-full text-base shadow-md shadow-primary/25 hover:shadow-primary/35 hover:-translate-y-0.5 transition-transform"
+                  disabled={state.submitting}
                 >
-                  Send Message
+                  {state.submitting ? "Sending…" : "Send Message"}
                 </Button>
               </div>
+              {state.succeeded && (
+                <div className="pt-4">
+                  <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800">
+                    <p className="font-semibold">Thanks! Your message has been sent.</p>
+                    <p className="text-sm">We'll get back to you shortly at the email provided.</p>
+                  </div>
+                </div>
+              )}
             </form>
           </div>
 
@@ -86,6 +99,48 @@ export default function Contact() {
                   <Mail className="text-primary h-5 w-5" />
                   <span>Email: info@caesarsgroup.ng</span>
                 </p>
+              </div>
+              {/* Socials */}
+              <div className="pt-2">
+                <div className="text-sm font-semibold text-black/70 mb-2">Follow us</div>
+                <div className="flex items-center gap-3">
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/company/caesar-rise-group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our LinkedIn"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-sm hover:opacity-90 transition"
+                    style={{ backgroundColor: "#0A66C2" }}
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                  {/* Instagram (gradient) */}
+                  <a
+                    href="https://www.instagram.com/caesrsenergyservices?igsh=cnZrbXJwdWFxaGpl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our Instagram"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-sm hover:opacity-90 transition"
+                    style={{
+                      background:
+                        "linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)",
+                    }}
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  {/* WhatsApp */}
+                  <a
+                    href="https://wa.me/353830095716"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chat with us on WhatsApp"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-sm hover:opacity-90 transition"
+                    style={{ backgroundColor: "#25D366" }}
+                  >
+                    <Phone className="h-5 w-5" />
+                  </a>
+                </div>
               </div>
             </div>
 

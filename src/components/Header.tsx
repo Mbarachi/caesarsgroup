@@ -10,15 +10,15 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="flex items-center justify-between whitespace-nowrap border-b border-primary/20 px-10 py-4 bg-white dark:bg-background-dark">
+    <header className="flex items-center justify-between whitespace-nowrap border-b border-primary/20 px-8 py-4 bg-white dark:bg-background-dark">
       {/* Logo Section */}
       <div className="flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer" onClick={() => navigate("/")}>
         <img src={logo}
           alt="Caesar Energy Logo"
-          className="h-14 mr-3"
+          className="h-14 mr-1"
           loading="lazy"
         />
-        <h2 className="text-lg font-bold brand-serif uppercase tracking-wide">Caesars Energy Services</h2>
+        <h2 className="text-sm sm:text-base md:text-lg font-bold brand-serif uppercase tracking-wide leading-tight">Caesars Energy Services</h2>
       </div>
 
       {/* Desktop Navigation */}
@@ -29,7 +29,7 @@ const Header = () => {
             { label: "About", to: "/about" },
             { label: "Services", to: "/services" },
             { label: "Shop", to: "/shop" },
-            { label: "Team", to: "/team" },
+            // { label: "Team", to: "/team" },
             { label: "Contact", to: "/contact" },
           ].map((link) => (
             <Link
@@ -51,11 +51,11 @@ const Header = () => {
       <div className="md:hidden flex items-center justify-end flex-1">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6 text-primary" />
+            <Button variant="ghost" size="icon" className="transition-transform">
+              <Menu className="h-7 w-7 text-primary scale-x-110" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-white dark:bg-background-dark">
+          <SheetContent side="right" open={open} className="bg-white dark:bg-background-dark">
             <div className="flex flex-col gap-6 mt-10">
               {[
                 { label: "About", to: "/about" },

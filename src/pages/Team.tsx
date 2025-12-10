@@ -16,10 +16,23 @@ type Member = {
 };
 
 const members: Member[] = [
-    { id: 1, name: "Mgbemena Ugochukwu Michael", role: "Head, Engineering Operations & Business Development", bio: "Ugo is a seasoned Electrical and Electronics Engineer with over a decade of experience in power, telecommunications, renewable energy, and semiconductor industries. He has successfully delivered projects in both private and commercial renewable energy sectors in Nigeria & accross the continent.", photo: ugoImg },
-    { id: 2, name: "Daniela Okafor", role: "Head, Energy policy & Financial strategy", bio: "Daniela is a Certified Public Accountant with over six years of experience in M&A, corporate finance, and business intelligence. Throughout her career, she has demonstrated a strong ability to translate complex financial and operational data into strategic insights that drive business performance and organizational growth.", photo: danielaImg },
-    { id: 3, name: "Prince Barimene Firi ", role: "Head, Digital Marketing and creative services", bio: "Prince is a versatile professional with a diverse background spanning data analysis, real estate, and business consulting. With a Bachelor’s degree in Business Administration from Turkey & a Master's Degree from Beijing Normal University in China, Prince Barimene Firi has built a solid foundation in Digital marketing, and strategic consulting.", photo: firiImg },
-    { id: 4, name: "Olabode Moses", role: "Lead Technician", bio: "Bode is an experienced Electrical technician with over a decade’s experience in small, medium & large scale energy projects. With safety & Quality as our top priority, His attention to detail has enabled him execute jobs in a timely and professional manner", photo: mosesImg },
+    { 
+        id: 1, 
+        name: "Mgbemena Ugochukwu  (BEng, MBA)", 
+        role: "Head, Engineering Operations & Business Development", 
+        bio: "Ugo is a seasoned Electrical and Electronics Engineer with over a decade of experience in power, telecommunications, renewable energy, and semiconductor industries. He has successfully delivered projects in both private and commercial renewable energy sectors in Nigeria & accross the continent. Ugo previously served as a Process Engineer at Intel Corporation, a global leader in semiconductor manufacturing, for six years, where he played a key role in the fabrication & processing of semiconductor wafers. He also holds an MBA in Project Management from Ireland’s Dublin Business School, further enhancing his expertise in leading complex projects with precision and efficiency.", photo: ugoImg },
+    { 
+        id: 2, 
+        name: "Daniela Okafor (CPA)", 
+        role: "Head, Energy policy & Financial strategy", 
+        bio: "Daniela is a Certified Public Accountant with over six years of experience in M&A, corporate finance, and business intelligence. Throughout her career, she has demonstrated a strong ability to translate complex financial and operational data into strategic insights that drive business performance and organizational growth. Daniela began her career at Deloitte Philippines as a Financial Advisory Associate, specializing in business valuations and financial due diligence for clients across diverse industries. She currently serves at APM Terminals Nigeria (a Maersk Company), where she leads data-driven transformation initiatives across the African region.", photo: danielaImg },
+    {
+        id: 3, 
+        name: "Prince Barimene Firi", 
+        role: "Head, Digital Marketing and creative services", 
+        bio: "Prince is a versatile professional with a diverse background spanning data analysis, real estate, and business consulting. With a Bachelor’s degree in Business Administration from Turkey & a Master's Degree from Beijing Normal University in China, Prince Barimene Firi has built a solid foundation in Digital marketing, and strategic consulting. He started his career as a Data Analyst at a leading technology company (Tedcorp), Prince Barimene Firi spent three years leveraging data to drive insights and optimize business operations. In addition to their career achievements, Prince Barimene Firi is the founder of PBF Consulting, a small yet dynamic firm that specializes in offering business solutions and advisory services to companies looking to innovate and improve operational efficiency.", photo: firiImg
+    },
+    { id: 4, name: "Olabode Moses", role: "Lead Technician", bio: "Bode is an experienced Electrical technician with over a decade’s experience in small, medium & large scale energy projects. With safety & Quality as our top priority, His attention to detail has enabled him execute jobs in a timely and professional manner.", photo: mosesImg },
     { id: 5, name: "Mbarachi Victor", role: "Head, Software Development", bio: "Victor is a skilled software engineer with expertise in both web and mobile application development. He simply solves real-life problems using technology.", photo: victorImg },
 ];
 
@@ -40,7 +53,7 @@ export default function Team() {
                         <Tile member={members[0]} onClick={() => setActive(members[0])} />
                         <TextureTile variant="diagonal" />
                         <Tile member={members[1]} onClick={() => setActive(members[1])} />
-                        <CtaTile title="AGENCY" subtitle="LEADERSHIP" tone="light" />
+                        <CtaTile title="Our" subtitle="LEADERSHIP" tone="light" />
                         <Tile member={members[2]} onClick={() => setActive(members[2])} />
                         <CtaTile title="MEET THE" subtitle="TEAM" tone="solid" />
                         <Tile member={members[3]} onClick={() => setActive(members[3])} />
@@ -58,7 +71,7 @@ export default function Team() {
                         <Tile member={members[4]} onClick={() => setActive(members[4])} />
                         <Tile member={members[5]} onClick={() => setActive(members[5])} />
                         <Tile member={members[6]} onClick={() => setActive(members[6])} />
-                        <CtaTile title="AGENCY" subtitle="LEADERSHIP" tone="light" />
+                        <CtaTile title="" subtitle="LEADERSHIP" tone="light" />
                         <Tile member={members[7]} onClick={() => setActive(members[7])} />
                         <CtaTile title="MEET THE" subtitle="TEAM" tone="solid" />
                         {members.slice(8, 11).map((m) => (
@@ -132,8 +145,8 @@ function CtaTile({ title, subtitle, tone, onClick }: { title: string; subtitle: 
             <button onClick={onClick} className="relative aspect-square rounded-md overflow-hidden border border-black/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300/40">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100" />
                 <div className="relative z-10 h-full w-full flex flex-col items-center justify-center gap-1 text-center p-4">
-                    <p className="text-orange-600 font-bold tracking-wide text-xs md:text-sm">{title}</p>
-                    <h3 className="text-lg md:text-xl font-extrabold text-gray-900">{subtitle}</h3>
+                    {/* <p className="text-orange-600 font-bold tracking-wide text-lg md:text-xl">{title}</p> */}
+                    <h3 className="text-lg md:text-xl font-extrabold text-orange-600">{subtitle}</h3>
                     {/* <Button variant="outline" className="mt-2 border-orange-600 text-orange-600 px-3 py-1">View</Button> */}
                     {/* subtle chevron hint */}
                     <motion.span initial={{ x: 0, opacity: 0 }} whileHover={{ x: 4, opacity: 1 }} className="mt-1 text-orange-600">→</motion.span>

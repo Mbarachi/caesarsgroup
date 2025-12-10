@@ -23,8 +23,26 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="text-3xl font-extrabold tracking-tighter @[480px]:text-5xl">
-            Power the Future with us
+          <h1 className="text-2xl @[480px]:text-5xl font-extrabold tracking-tight @[480px]:tracking-tighter leading-tight flex items-baseline gap-2 whitespace-nowrap @[480px]:whitespace-normal">
+            {/* Keep the word 'POWER' together with custom O */}
+            <span className="inline-flex items-baseline whitespace-nowrap">
+              <span className="uppercase leading-none">P</span>
+              <span aria-hidden className="inline-flex items-baseline justify-center align-baseline leading-none">
+                <svg
+                  className="inline-block h-[1em] w-[1em] align-baseline translate-y-[0.06em]"
+                  viewBox="0 0 64 64"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="6" />
+                  <path
+                    d="M36 10 L22 34 H32 L28 54 L46 28 H36 L40 10 Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <span className="uppercase leading-none">WER</span>
+            </span>
+            <span className="uppercase leading-none">THE FUTURE WITH US</span>
           </h1>
 
           <p className="text-base font-normal text-white/90 @[480px]:text-lg">
