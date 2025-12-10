@@ -2,7 +2,7 @@
   "name": "caesars",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Mbarachi.github.io/caesarsgroup",
+  "homepage": ".",
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "@radix-ui/react-dialog": "^1.1.15",

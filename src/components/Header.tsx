@@ -58,6 +58,7 @@ const Header = () => {
           <SheetContent side="right" open={open} className="bg-white dark:bg-background-dark">
             <div className="flex flex-col gap-6 mt-10">
               {[
+                { label: "Home", to: "/" },
                 { label: "About", to: "/about" },
                 { label: "Services", to: "/services" },
                 { label: "Shop", to: "/shop" },
