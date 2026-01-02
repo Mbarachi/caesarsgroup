@@ -5,6 +5,7 @@ import partner3Image from "../assets/Ritar.jpg";
 import partner4Image from "../assets/canadian_solar.png";
 import partner5Image from "../assets/moli_power.jpg";
 import partner6Image from "../assets/rural.jpg";
+import partner7Image from "../assets/Rean.png";
 
 const 
 PartnersSection = () => {
@@ -15,6 +16,7 @@ PartnersSection = () => {
     { id: 4, image: partner4Image, name: "Canadian Solar" },
     { id: 5, image: partner5Image, name: "Moli Power" },
     { id: 6, image: partner6Image, name: "Rural" },
+    { id: 7, image: partner7Image, name: "Rean" },
   ];
 
   // Duplicate partners array for seamless loop
