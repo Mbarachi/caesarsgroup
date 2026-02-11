@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="flex items-center gap-3">
             <img src={darkLogo} className="w-[5rem]" alt="Caesars Energy Logo" />
             <span className="text-gray-600 dark:text-gray-400 text-sm">
-              © 2025 Caesars Energy Services. All rights reserved.
+              © {new Date().getFullYear()} Caesars Energy Services. All rights reserved.
             </span>
           </div>
 
