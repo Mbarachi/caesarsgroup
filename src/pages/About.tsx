@@ -1,4 +1,5 @@
 import aboutImage from "../assets/about_us.jpeg";
+import solarImage from "../assets/solar-img.jpeg";
 
 
 export default function About() {
@@ -33,10 +34,8 @@ export default function About() {
                 <h3 className="text-2xl font-bold mt-8 text-gray-900">Our Values</h3>
                 <ul className="space-y-2">
                   <li><strong>Sustainability:</strong> We are dedicated to promoting environmentally responsible practices and minimizing our impact on the planet.</li>
-                  <li><strong>Innovation:</strong> We continuously seek out new technologies and approaches to improve our products and services.</li>
                   <li><strong>Customer Focus:</strong> We prioritize customer satisfaction and strive to exceed expectations in every interaction.</li>
                   <li><strong>Integrity:</strong> We operate with honesty, transparency, and ethical conduct in all our business dealings.</li>
-                  <li><strong>Excellence:</strong> We are committed to delivering the highest standards of quality and performance in all aspects of our work.</li>
                 </ul>
               </div>
             </div>

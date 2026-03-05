@@ -20,25 +20,28 @@ type Package = {
 
 const packages: Package[] = [
   {
-    title: "Inverter System Package\nEconomy",
-    capacity: "3KVA",
-    batteries: "2 Deep cycle Batteries, (3KVA Inverter)",
+    title: "Solar System\nPackage",
+    capacity: "6KVA",
+    batteries:
+      "4 batteries (lithium)\n6 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
     willPower: [
-      "12+ lights",
+      "Basic residential needs",
+      "Lights",
       "Fans",
+      "TVs",
       "Computers",
-      "Inverter Refrigerator",
+      "Inverter refrigerator",
     ],
-    price: "₦1,414,500",
+    price: "₦3,460,000",
     theme: {
       from: "from-[#FF715D]",
       to: "to-[#F63D2F]",
       accent: "bg-[#FFEEE9]",
     },
-    icon: <PlugZap className="h-6 w-6 text-white" />,
+    icon: <Sun className="h-6 w-6 text-white" />,
   },
   {
-    title: "Inverter System Package\nEconomy Plus +",
+    title: "Inverter System Package (No Solar)\nEconomy Plus +",
     capacity: "5KVA",
     batteries: "4 Deep cycle Batteries, (5KVA Inverter)",
     willPower: [
@@ -48,7 +51,7 @@ const packages: Package[] = [
       "Low-wattage Freezer",
       "1x Inverter AC (optional)",
     ],
-    price: "₦2,775,000",
+    price: "₦2,440,000",
     theme: {
       from: "from-[#1ABC9C]",
       to: "to-[#0E9F6E]",
@@ -110,7 +113,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
         </div>
 
         {/* Batteries */}
-        <div className="px-6 pt-2 text-white/90 text-sm">{pkg.batteries}</div>
+        <div className="px-6 pt-2 text-white/90 text-sm whitespace-pre-line">{pkg.batteries}</div>
 
         {/* Will power */}
         <div className="mt-4 mb-4 mx-6 rounded-xl bg-white/10 backdrop-blur-sm p-4">
