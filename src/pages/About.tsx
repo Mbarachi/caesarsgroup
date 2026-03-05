@@ -1,8 +1,58 @@
 import aboutImage from "../assets/about_us.jpeg";
-import solarImage from "../assets/solar-img.jpeg";
+import { useEffect, useState } from "react";
+
+const installationImages: string[] = (() => {
+  try {
+    const ctx = require.context(
+      "../assets/installations",
+      false,
+      /\.(png|jpe?g|webp)$/i
+    );
+    return ctx
+      .keys()
+      .sort((a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }))
+      .map((key: string) => ctx<string>(key));
+  } catch {
+    return [];
+  }
+})();
+
+const fallbackImages = [aboutImage];
 
 
 export default function About() {
+  const images = installationImages.length
+    ? installationImages
+    : fallbackImages;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animateIn, setAnimateIn] = useState(true);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [images.length]);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      setAnimateIn(false);
+
+      window.setTimeout(() => {
+        setActiveIndex((i) => (i + 1) % images.length);
+        window.setTimeout(() => setAnimateIn(true), 30);
+      }, 350);
+    }, 4500);
+
+    return () => window.clearInterval(id);
+  }, [images.length]);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const nextSrc = images[(activeIndex + 1) % images.length];
+    const img = new Image();
+    img.src = nextSrc;
+  }, [activeIndex, images]);
+
   return (
     <main className="flex-grow">
       {/* Intro */}
@@ -39,11 +89,13 @@ export default function About() {
                 </ul>
               </div>
             </div>
-            <div className="aspect-[4/3] lg:aspect-auto rounded-xl overflow-hidden shadow-2xl lg:self-end">
+            <div className="w-full h-80 sm:h-96 md:h-[30rem] lg:h-[34rem] rounded-xl overflow-hidden shadow-2xl lg:self-start">
               <img
-                src={aboutImage}
-                alt="Solar panels on a roof"
-                className="object-cover w-full h-full"
+                src={images[activeIndex]}
+                alt={`Installation ${activeIndex + 1}`}
+                className={`object-cover w-full h-full transform-gpu transition-all duration-700 ease-out ${
+                  animateIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                }`}
                 loading="lazy"
               />
             </div>
