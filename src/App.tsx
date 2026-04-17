@@ -9,6 +9,7 @@ import Shop from "./pages/Shop";
 import SavingsCalculator from "./components/SavingsCalculator";
 import Header from "./components/Header";
 import Team from "./pages/Team";
+import Careers from "./pages/Careers";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/team" element={<Team />} />
               <Route path="/savings-calculator" element={<SavingsCalculator />} />
+              <Route path="/careers" element={<Careers />} />
             </Routes>
           </div>
         </main>

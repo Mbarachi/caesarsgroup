@@ -37,6 +37,13 @@ const Footer = () => {
             >
               Contact
             </Link>
+            <Separator orientation="vertical" className="h-4 hidden md:block" />
+            <Link
+              to="/careers"
+              className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+            >
+              Careers
+            </Link>
           </div>
         </div>
       </div>
