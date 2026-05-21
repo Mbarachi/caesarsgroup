@@ -21,18 +21,18 @@ type Package = {
 const packages: Package[] = [
   {
     title: "Solar System\nPackage",
-    capacity: "6KVA",
+    capacity: "5KVA",
     batteries:
-      "4 batteries (lithium)\n6 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
+      "10kwh lithium batteries\n8 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
     willPower: [
       "Basic residential needs",
       "Lights",
       "Fans",
       "TVs",
       "Computers",
-      "Inverter refrigerator",
+      "Inverter Refrigerator",
     ],
-    price: "₦3,460,000",
+    price: "₦3,960,000",
     theme: {
       from: "from-[#FF715D]",
       to: "to-[#F63D2F]",
@@ -41,36 +41,39 @@ const packages: Package[] = [
     icon: <Sun className="h-6 w-6 text-white" />,
   },
   {
-    title: "Inverter System Package (No Solar)\nEconomy Plus +",
-    capacity: "5KVA",
-    batteries: "4 Deep cycle Batteries, (5KVA Inverter)",
+    title: "Solar System\nResidential Premium",
+    capacity: "10KVA",
+    batteries:
+      "1 15kwh lithium battery\n12 mono crystalline solar panels\nInstallation Accessories / Service charge\n10kva 48v Hybrid inverter",
     willPower: [
-      "14+ lights",
-      "Fans",
+      "Basic residential needs",
+      "Lights, fans, TVs",
+      "Low wattage Fridge",
+      "2 Air conditioners",
       "Computers",
-      "Low-wattage Freezer",
-      "1x Inverter AC (optional)",
     ],
-    price: "₦2,440,000",
+    price: "₦5,700,500",
     theme: {
       from: "from-[#1ABC9C]",
       to: "to-[#0E9F6E]",
       accent: "bg-[#E6FFF7]",
     },
-    icon: <Battery className="h-6 w-6 text-white" />,
+    icon: <PlugZap className="h-6 w-6 text-white" />,
   },
   {
     title: "Solar System Package\nEconomy",
     capacity: "3.6KVA",
-    batteries: "2 Deep cycle Batteries • 2×585 watts solar panels",
+    batteries:
+      "2 Deep Cycle Batteries\n3 × bifacial solar panels\n3.6KVA Inverter",
     willPower: [
-      "12+ lights",
+      "Basic residential needs",
+      "Lights",
       "Fans",
+      "TVs",
+      "Air conditioners",
       "Computers",
-      "Inverter Refrigerator",
-      "Inverter Air Conditioner",
     ],
-    price: "₦1,855,750",
+    price: "₦1,955,750",
     theme: {
       from: "from-[#FDBA74]",
       to: "to-[#FB923C]",
