@@ -9,6 +9,8 @@ type Package = {
   capacity: string;
   batteries: string;
   willPower: string[];
+  backupTime: string;
+  idealFor: string;
   price: string;
   theme: {
     from: string;
@@ -23,15 +25,15 @@ const packages: Package[] = [
     title: "Solar System\nPackage",
     capacity: "5KVA",
     batteries:
-      "10kwh lithium batteries\n8 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
+      "10kwh lithium battery\n8 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
     willPower: [
-      "Basic residential needs",
-      "Lights",
-      "Fans",
-      "TVs",
+      "Refrigerator",
+      "Lights, fans, T.Vs",
+      "1.5hp Air conditioners (regulated)",
       "Computers",
-      "Inverter Refrigerator",
     ],
+    backupTime: "12-14 hours backup time",
+    idealFor: "Ideal for 4-5 bedroom space",
     price: "₦3,960,000",
     theme: {
       from: "from-[#FF715D]",
@@ -46,12 +48,13 @@ const packages: Package[] = [
     batteries:
       "1 15kwh lithium battery\n12 mono crystalline solar panels\nInstallation Accessories / Service charge\n10kva 48v Hybrid inverter",
     willPower: [
-      "Basic residential needs",
-      "Lights, fans, TVs",
-      "Low wattage Fridge",
-      "2 Air conditioners",
+      "Refrigerator",
+      "Lights, fans",
+      "1.5hp Air conditioners (regulated)",
       "Computers",
     ],
+    backupTime: "12-14 hours backup time",
+    idealFor: "Ideal for larger spaces",
     price: "₦5,700,500",
     theme: {
       from: "from-[#1ABC9C]",
@@ -62,17 +65,17 @@ const packages: Package[] = [
   },
   {
     title: "Solar System Package\nEconomy",
-    capacity: "3.6KVA",
+    capacity: "3.5KVA",
     batteries:
-      "2 Deep Cycle Batteries\n3 × bifacial solar panels\n3.6KVA Inverter",
+      "2 Deep Cycle Batteries\n3 × bifacial solar panels\n3.5KVA Inverter",
     willPower: [
-      "Basic residential needs",
-      "Lights",
-      "Fans",
-      "TVs",
-      "Air conditioners",
+      "Refrigerator",
+      "Lights, fans, TVs",
+      "1x1hp Air Conditioner (regulated hours)",
       "Computers",
     ],
+    backupTime: "8-10 hours backup time",
+    idealFor: "Ideal for 2-3 bedroom space",
     price: "₦1,955,750",
     theme: {
       from: "from-[#FDBA74]",
@@ -129,7 +132,11 @@ function PackageCard({ pkg }: { pkg: Package }) {
               </li>
             ))}
           </ul>
-          
+
+          <div className="mt-3 pt-3 border-t border-white/20 text-white/90 text-sm space-y-1">
+            <div>{pkg.backupTime}</div>
+            <div>{pkg.idealFor}</div>
+          </div>
         </div>
 
         {/* Bottom bar with price and CTA */}
