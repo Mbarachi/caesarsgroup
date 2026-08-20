@@ -76,7 +76,7 @@ const packages: Package[] = [
     ],
     backupTime: "8-10 hours backup time",
     idealFor: "Ideal for 2-3 bedroom space",
-    price: "₦1,955,750",
+    price: "₦2,100,500",
     theme: {
       from: "from-[#FDBA74]",
       to: "to-[#FB923C]",
