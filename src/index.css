@@ -13,3 +13,58 @@
 html {
   scroll-behavior: smooth;
 }
+/* ── Printing the energy audit ──────────────────────────────────────────────
+   The calculator renders a purpose-built one-page sheet (AuditSheet.tsx) that
+   is hidden on screen. Printing hides the site chrome and the wizard's own
+   on-screen content, leaving the sheet alone in the flow — no absolute
+   positioning, which framer-motion's leftover transforms would otherwise
+   trap inside the animated panel. */
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Site chrome never belongs on the printed audit. */
+  header,
+  footer {
+    display: none !important;
+  }
+
+  /* Strip the layout padding the app adds around page content. */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* The panel the sheet sits in is a card on screen and nothing in print. */
+  .print-plain {
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .print-sheet table,
+  .print-sheet tr,
+  .print-sheet thead {
+    break-inside: avoid;
+  }
+
+  /* Printers drop background colours by default; keep the ones that carry
+     meaning when the user enables background graphics. */
+  .print-sheet {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

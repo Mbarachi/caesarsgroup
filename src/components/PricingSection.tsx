@@ -3,90 +3,23 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 import type { ReactElement } from "react";
+import { PACKAGES, PackageId, SolarPackage } from "../lib/solar/packages";
 
-type Package = {
-  title: string;
-  capacity: string;
-  batteries: string;
-  willPower: string[];
-  backupTime: string;
-  idealFor: string;
-  price: string;
-  theme: {
-    from: string;
-    to: string;
-    accent: string;
-  };
-  icon: ReactElement;
+// Package data lives in src/lib/solar/packages.ts so that this page and the
+// energy calculator's recommendation can never disagree about a price or a spec.
+const ICONS: Record<PackageId, ReactElement> = {
+  standard: <Sun className="h-6 w-6 text-white" />,
+  premium: <PlugZap className="h-6 w-6 text-white" />,
+  economy: <Battery className="h-6 w-6 text-white" />,
 };
 
-const packages: Package[] = [
-  {
-    title: "Solar System\nPackage",
-    capacity: "5KVA",
-    batteries:
-      "10kwh lithium battery\n8 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
-    willPower: [
-      "Refrigerator",
-      "Lights, fans, T.Vs",
-      "1.5hp Air conditioners (regulated)",
-      "Computers",
-    ],
-    backupTime: "12-14 hours backup time",
-    idealFor: "Ideal for 4-5 bedroom space",
-    price: "₦3,960,000",
-    theme: {
-      from: "from-[#FF715D]",
-      to: "to-[#F63D2F]",
-      accent: "bg-[#FFEEE9]",
-    },
-    icon: <Sun className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Solar System\nResidential Premium",
-    capacity: "10KVA",
-    batteries:
-      "1 15kwh lithium battery\n12 mono crystalline solar panels\nInstallation Accessories / Service charge\n10kva 48v Hybrid inverter",
-    willPower: [
-      "Refrigerator",
-      "Lights, fans",
-      "1.5hp Air conditioners (regulated)",
-      "Computers",
-    ],
-    backupTime: "12-14 hours backup time",
-    idealFor: "Ideal for larger spaces",
-    price: "₦5,700,500",
-    theme: {
-      from: "from-[#1ABC9C]",
-      to: "to-[#0E9F6E]",
-      accent: "bg-[#E6FFF7]",
-    },
-    icon: <PlugZap className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Solar System Package\nEconomy",
-    capacity: "3.5KVA",
-    batteries:
-      "2 Deep Cycle Batteries\n3 × bifacial solar panels\n3.5KVA Inverter",
-    willPower: [
-      "Refrigerator",
-      "Lights, fans, TVs",
-      "1x1hp Air Conditioner (regulated hours)",
-      "Computers",
-    ],
-    backupTime: "8-10 hours backup time",
-    idealFor: "Ideal for 2-3 bedroom space",
-    price: "₦2,100,500",
-    theme: {
-      from: "from-[#FDBA74]",
-      to: "to-[#FB923C]",
-      accent: "bg-[#FFF3E6]",
-    },
-    icon: <Sun className="h-6 w-6 text-white" />,
-  },
-];
-
-function PackageCard({ pkg }: { pkg: Package }) {
+export function PackageCard({
+  pkg,
+  showCta = false,
+}: {
+  pkg: SolarPackage;
+  showCta?: boolean;
+}) {
   const navigate = useNavigate();
 
   return (
@@ -110,7 +43,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
         {/* Badge + Capacity */}
         <div className="px-6 pt-6 flex items-center gap-3 text-white">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm">
-            {pkg.icon}
+            {ICONS[pkg.id]}
           </div>
           <div>
             <div className="text-xs/4 opacity-90">Capacity</div>
@@ -140,18 +73,17 @@ function PackageCard({ pkg }: { pkg: Package }) {
         </div>
 
         {/* Bottom bar with price and CTA */}
-        <div className={`mt-auto px-6 py-4 ${pkg.theme.accent} text-gray-900`}> 
-          <div className="flex items-end justify-center">
+        <div className={`mt-auto px-6 py-4 ${pkg.theme.accent} text-gray-900`}>
+          <div className={`flex items-end ${showCta ? "justify-between" : "justify-center"}`}>
             <div>
               <div className="uppercase text-xs font-semibold tracking-wider opacity-70">Package Fee:</div>
               <div className="text-2xl md:text-3xl font-extrabold mt-1">{pkg.price}</div>
             </div>
-            {/* <Button
-              className="font-bold"
-              onClick={() => navigate("/contact")}
-            >
-              Get Quote
-            </Button> */}
+            {showCta && (
+              <Button className="font-bold" onClick={() => navigate("/contact")}>
+                Get Quote
+              </Button>
+            )}
           </div>
         </div>
       </div>
@@ -173,8 +105,8 @@ export default function PricingSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {packages.map((pkg) => (
-            <PackageCard key={pkg.title} pkg={pkg} />
+          {PACKAGES.map((pkg) => (
+            <PackageCard key={pkg.id} pkg={pkg} />
           ))}
         </div>
       </div>

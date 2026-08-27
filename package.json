@@ -64,5 +64,11 @@
     "gh-pages": "^6.1.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.14"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^react-router/dom$": "<rootDir>/node_modules/react-router/dist/development/dom-export.js",
+      "^react-router-dom$": "<rootDir>/node_modules/react-router-dom/dist/index.js"
+    }
   }
 }
