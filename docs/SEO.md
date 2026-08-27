@@ -104,14 +104,19 @@ Upload the **entire contents** of `build/` to the web root, including:
 ### Verify after upload
 
 ```bash
-curl -sI https://www.caesarsgroup.ng        # expect 301 to https://caesarsgroup.ng
-curl -s  https://caesarsgroup.ng/services | grep -o '<title>[^<]*</title>'
-curl -sI https://caesarsgroup.ng/no-such-page | head -1   # expect 404, NOT 200
-curl -s  https://caesarsgroup.ng/sitemap.xml | head -3    # expect XML, not HTML
+npm run verify:seo
 ```
 
-The 404 check is the important one. If it still returns 200, `.htaccess` did not
-upload or `AllowOverride` is off on the host — ask the host to enable it.
+Twenty-two checks against the live site: redirects, real 404s, prerendered
+content on every route, unique titles and descriptions, canonicals, structured
+data, sitemap. Exits non-zero if anything fails, so it can gate a deploy script.
+
+Point it elsewhere with `npm run verify:seo -- https://staging.example.com`.
+
+**The 404 check is the one that matters most.** If an unknown URL returns 200,
+`.htaccess` did not upload — it is a hidden file and most FTP clients skip it
+unless "show hidden files" is enabled — or the host has `AllowOverride` off, in
+which case ask them to enable it for the document root.
 
 ---
 
