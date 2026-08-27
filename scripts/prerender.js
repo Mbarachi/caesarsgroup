@@ -70,12 +70,13 @@ function sitemap(pages, origin) {
 /**
  * Locate a Chrome to drive.
  *
- * Puppeteer normally downloads its own, but that download is a ~150MB step that
- * fails behind some networks and proxies. Any recent Chrome will render this
- * site identically, so an already-installed one is preferred when present and
- * the bundled download is the fallback rather than a hard requirement.
+ * The dependency is puppeteer-core rather than puppeteer: the full package
+ * downloads its own ~150MB Chrome in a postinstall step, and when that download
+ * is blocked npm rolls the whole install back, leaving the build broken in a
+ * way that is not obvious. Any recent Chrome renders this site identically, so
+ * an installed one is used instead.
  *
- * Override explicitly with PUPPETEER_EXECUTABLE_PATH if neither is right.
+ * Override with PUPPETEER_EXECUTABLE_PATH if the browser lives somewhere else.
  */
 function findChrome() {
   if (process.env.PUPPETEER_EXECUTABLE_PATH) {
@@ -99,8 +100,12 @@ function findChrome() {
     return found;
   }
 
-  // Fall through to whatever puppeteer downloaded for itself.
-  return undefined;
+  throw new Error(
+    "no Chrome found to prerender with.\n" +
+      "  Install Google Chrome, or point at an existing one:\n" +
+      "    PUPPETEER_EXECUTABLE_PATH=/path/to/chrome npm run prerender\n" +
+      "  To skip prerendering entirely (not recommended for production), use `npm run build:fast`."
+  );
 }
 
 async function main() {
@@ -109,7 +114,7 @@ async function main() {
     process.exit(1);
   }
 
-  const puppeteer = require("puppeteer");
+  const puppeteer = require("puppeteer-core");
   const server = serve();
   await new Promise((resolve) => server.listen(PORT, resolve));
 

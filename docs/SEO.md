@@ -43,9 +43,16 @@ Crawlers now get complete pages with no JavaScript required. The route list is
 not duplicated in the script — the app publishes it on `window.__SEO_PAGES__`,
 so the script and the site cannot disagree.
 
-**Chrome:** the script prefers an already-installed Chrome and falls back to
-Puppeteer's own download. Override with `PUPPETEER_EXECUTABLE_PATH` if needed.
-`npm run build:fast` skips prerendering for quick local builds.
+**Chrome:** the dependency is `puppeteer-core`, not `puppeteer`. The full
+package downloads its own ~150MB Chrome in a postinstall step, and where that
+download is blocked npm rolls the entire install back — leaving a build that
+fails at prerender for a reason that is not obvious. `puppeteer-core` downloads
+nothing and drives an installed Chrome instead.
+
+So **Google Chrome must be installed on whichever machine runs the build.**
+Point at a different binary with `PUPPETEER_EXECUTABLE_PATH=/path/to/chrome`.
+`npm run build:fast` skips prerendering for quick local builds — never use it
+for a production upload, or every route ships as an empty div again.
 
 ### 3. Sitemap
 
