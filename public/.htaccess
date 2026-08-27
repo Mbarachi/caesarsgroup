@@ -1,0 +1,72 @@
+# Caesars Energy Services — Apache configuration
+#
+# Drop this in the web root alongside index.html. It does four jobs:
+#   1. forces one canonical origin, so ranking signals stop splitting
+#   2. serves the prerendered page for each route
+#   3. returns a real 404 for anything else, instead of 200 + the homepage
+#   4. compresses and caches static assets
+#
+# Before this, every URL on the site returned 200 OK — including nonsense ones —
+# which Google treats as a "soft 404" and counts against crawl budget.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ── 1. Canonical origin: https, no www ─────────────────────────────────────
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://caesarsgroup.ng%{REQUEST_URI} [R=301,L]
+
+  # ── 2. Prerendered routes ──────────────────────────────────────────────────
+  # Serve /about from /about/index.html *without* bouncing to /about/, so the
+  # URL the sitemap advertises is the URL that answers.
+  DirectorySlash Off
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*?)/?$ /$1/index.html [L]
+
+  # Strip a trailing slash on anything else, to keep one URL per page.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+</IfModule>
+
+# ── 3. A real 404 ────────────────────────────────────────────────────────────
+ErrorDocument 404 /404.html
+
+# ── 4. Compression ───────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ── 5. Caching ───────────────────────────────────────────────────────────────
+# CRA fingerprints filenames in /static, so those are safe to cache hard.
+# HTML must not be, or visitors keep seeing an old build.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff2|png|jpg|jpeg|svg|webp)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+AddType application/xml .xml
+AddDefaultCharset UTF-8

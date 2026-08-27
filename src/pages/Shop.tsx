@@ -104,7 +104,7 @@ export default function Shop() {
         <main className="flex-grow">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">Shop</h1>
+                    <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">Shop Solar Panels, Inverters &amp; Batteries</h1>
                     <p className="mt-3 text-lg text-black/70">Explore our curated solar hardware — designed for Nigerian conditions and backed by trusted support.</p>
                 </div>
 

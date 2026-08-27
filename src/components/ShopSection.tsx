@@ -37,9 +37,9 @@ const ShopSection = () => {
     return (
         <main id="shop" className="flex-grow container mx-auto px-6 py-12">
             <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                    Shop
-                </h1>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                    Shop Solar Panels, Inverters & Batteries
+                </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                     Explore our cutting-edge range of solar and renewable energy
                     solutions, engineered for superior performance and a sustainable

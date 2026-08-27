@@ -10,7 +10,7 @@ export default function Contact() {
     <main className="flex-grow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Contact Us</h2>
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Contact Caesars Energy Services</h1>
           <p className="mt-4 text-lg text-black/60">
             We're here to help. Reach out to us with any questions or inquiries, and we'll get back to you as soon as possible.
           </p>

@@ -62,9 +62,9 @@ const ServicesSection = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="text-center">
-          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Our Services
-          </h1>
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             We offer a comprehensive suite of renewable energy solutions tailored
             to meet your specific needs.

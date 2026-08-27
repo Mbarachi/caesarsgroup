@@ -8,12 +8,15 @@ import Contact from "./pages/Contact";
 import Shop from "./pages/Shop";
 import SavingsCalculator from "./components/SavingsCalculator";
 import Header from "./components/Header";
+import SeoManager from "./components/SeoManager";
 import Team from "./pages/Team";
 import Careers from "./pages/Careers";
 
 function App() {
   return (
     <Router>
+      {/* Keeps the document head in step with the current route. */}
+      <SeoManager />
       <div className="flex flex-col min-h-screen bg-white text-gray-900">
         {/* Header */}
         <Header />

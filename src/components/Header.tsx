@@ -14,7 +14,7 @@ const Header = () => {
       {/* Logo Section */}
       <div className="flex items-center gap-2 text-gray-800 dark:text-white cursor-pointer min-w-0" onClick={() => navigate("/") }>
         <img src={logo}
-          alt="Caesar Energy Logo"
+          alt="Caesars Energy Services — solar power systems in Nigeria"
           className="h-14 mr-1"
           loading="lazy"
         />

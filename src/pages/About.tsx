@@ -59,7 +59,7 @@ export default function About() {
       <section className="py-10 md:py-15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900">About Caesars Energy Services</h2>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900">About Caesars Energy Services</h1>
             <p className="mt-4 text-lg text-gray-600">
               Powering a greener future with innovative, cost effective off-grid and hybrid solar solutions for everyday people.
             </p>
@@ -92,7 +92,7 @@ export default function About() {
             <div className="w-full h-80 sm:h-96 md:h-[30rem] lg:h-[34rem] rounded-xl overflow-hidden shadow-2xl lg:self-start">
               <img
                 src={images[activeIndex]}
-                alt={`Installation ${activeIndex + 1}`}
+                alt={`Solar installation by Caesars Energy Services in Nigeria — project ${activeIndex + 1}`}
                 className={`object-cover w-full h-full transform-gpu transition-all duration-700 ease-out ${
                   animateIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
                 }`}

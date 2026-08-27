@@ -49,7 +49,7 @@ export default function Services() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Our Services</h2>
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Solar Services for Homes &amp; Businesses</h1>
             <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
               We offer a comprehensive suite of renewable energy solutions tailored to your needs—from solar installations to audits, mini‑grids, EV supply, and ongoing maintenance.
             </p>

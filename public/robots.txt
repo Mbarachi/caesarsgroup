@@ -1,3 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Keep the canonical host out of ambiguity — www 301s here via .htaccess.
+Sitemap: https://caesarsgroup.ng/sitemap.xml
