@@ -89,8 +89,8 @@ describe("requirementFor", () => {
     const sokoto = requirementFor(load, { ...lagosBackup, stateId: "sokoto" });
     // Sunnier site, same load, smaller array.
     expect(sokoto.arrayKwp).toBeLessThan(lagos.arrayKwp);
-    expect(lagos.psh).toBeCloseTo(4.6, 5);
-    expect(sokoto.psh).toBeCloseTo(5.9, 5);
+    expect(lagos.psh).toBeCloseTo(4.4, 5);
+    expect(sokoto.psh).toBeCloseTo(6.0, 5);
   });
 
   it("demands more battery as grid supply gets worse", () => {

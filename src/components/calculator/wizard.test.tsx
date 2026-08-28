@@ -149,6 +149,18 @@ describe("the calculator, driven as a user", () => {
     expect(within(sheet).getByText(/\+ 2 other appliances/)).toBeInTheDocument();
   });
 
+  it("names the customer's real geopolitical zone on the results screen", () => {
+    renderWizard();
+
+    // The wizard defaults to Lagos, which is a coastal South West state.
+    addAppliance("Standing Fan", 2);
+    click(continueButton());
+    click(seeSystem());
+
+    expect(screen.getByText(/peak sun hours for the South West/)).toBeInTheDocument();
+    expect(screen.queryByText(/Southern Inland/i)).toBeNull();
+  });
+
   it("flags heating loads on the results screen", () => {
     renderWizard();
 

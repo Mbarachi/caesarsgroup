@@ -3,78 +3,103 @@
  *
  * Peak Sun Hours (PSH) is the number of hours per day of full 1000W/m² sun that
  * would deliver the same energy as the site actually receives. Nigeria runs from
- * roughly 4.1 on the Niger Delta coast to 6.0 in the far north.
+ * roughly 4.0 on the Niger Delta coast to 6.0 in the far north — the north is
+ * dry and cloudless for most of the year, the south is humid with a long rainy
+ * season.
  *
- * The honest granularity here is the climate zone, not the state — two towns in
- * the same state differ by more than this table's precision. States are offered
- * in the UI because that is what people know; each simply resolves to its zone.
+ * States are grouped into the six geopolitical zones because that is how the
+ * country is actually described, and every customer already knows which one
+ * they are in. The alternative — inventing climate-band names — produced
+ * labels like "Southern Inland" for Lagos, which is a coastal city.
+ *
+ * There is real spread inside each zone: Ibadan is sunnier than Lagos though
+ * both are South West. Zone-level is the honest granularity for a desk
+ * estimate; the site survey is what settles it.
  */
 
-export type ZoneId = "far-north" | "middle-belt" | "south-inland" | "coastal";
+export type ZoneId =
+  | "north-west"
+  | "north-east"
+  | "north-central"
+  | "south-west"
+  | "south-east"
+  | "south-south";
 
 export type Zone = {
   id: ZoneId;
   label: string;
-  /** Average daily peak sun hours. */
+  /** Average daily peak sun hours across the zone. */
   psh: number;
 };
 
 export const ZONES: Record<ZoneId, Zone> = {
-  "far-north": { id: "far-north", label: "Far North", psh: 5.9 },
-  "middle-belt": { id: "middle-belt", label: "Middle Belt", psh: 5.3 },
-  "south-inland": { id: "south-inland", label: "Southern Inland", psh: 4.6 },
-  coastal: { id: "coastal", label: "Coastal / Niger Delta", psh: 4.2 },
+  "north-west": { id: "north-west", label: "North West", psh: 6.0 },
+  "north-east": { id: "north-east", label: "North East", psh: 5.9 },
+  "north-central": { id: "north-central", label: "North Central", psh: 5.4 },
+  "south-west": { id: "south-west", label: "South West", psh: 4.4 },
+  "south-east": { id: "south-east", label: "South East", psh: 4.5 },
+  "south-south": { id: "south-south", label: "South South", psh: 4.1 },
 };
 
 export type NigerianState = { id: string; name: string; zone: ZoneId };
 
 export const STATES: NigerianState[] = [
-  { id: "abia", name: "Abia", zone: "south-inland" },
-  { id: "adamawa", name: "Adamawa", zone: "middle-belt" },
-  { id: "akwa-ibom", name: "Akwa Ibom", zone: "coastal" },
-  { id: "anambra", name: "Anambra", zone: "south-inland" },
-  { id: "bauchi", name: "Bauchi", zone: "middle-belt" },
-  { id: "bayelsa", name: "Bayelsa", zone: "coastal" },
-  { id: "benue", name: "Benue", zone: "middle-belt" },
-  { id: "borno", name: "Borno", zone: "far-north" },
-  { id: "cross-river", name: "Cross River", zone: "coastal" },
-  { id: "delta", name: "Delta", zone: "coastal" },
-  { id: "ebonyi", name: "Ebonyi", zone: "south-inland" },
-  { id: "edo", name: "Edo", zone: "south-inland" },
-  { id: "ekiti", name: "Ekiti", zone: "south-inland" },
-  { id: "enugu", name: "Enugu", zone: "south-inland" },
-  { id: "fct", name: "FCT — Abuja", zone: "middle-belt" },
-  { id: "gombe", name: "Gombe", zone: "middle-belt" },
-  { id: "imo", name: "Imo", zone: "south-inland" },
-  { id: "jigawa", name: "Jigawa", zone: "far-north" },
-  { id: "kaduna", name: "Kaduna", zone: "middle-belt" },
-  { id: "kano", name: "Kano", zone: "far-north" },
-  { id: "katsina", name: "Katsina", zone: "far-north" },
-  { id: "kebbi", name: "Kebbi", zone: "far-north" },
-  { id: "kogi", name: "Kogi", zone: "middle-belt" },
-  { id: "kwara", name: "Kwara", zone: "middle-belt" },
-  { id: "lagos", name: "Lagos", zone: "south-inland" },
-  { id: "nasarawa", name: "Nasarawa", zone: "middle-belt" },
-  { id: "niger", name: "Niger", zone: "middle-belt" },
-  { id: "ogun", name: "Ogun", zone: "south-inland" },
-  { id: "ondo", name: "Ondo", zone: "south-inland" },
-  { id: "osun", name: "Osun", zone: "south-inland" },
-  { id: "oyo", name: "Oyo", zone: "south-inland" },
-  { id: "plateau", name: "Plateau", zone: "middle-belt" },
-  { id: "rivers", name: "Rivers", zone: "coastal" },
-  { id: "sokoto", name: "Sokoto", zone: "far-north" },
-  { id: "taraba", name: "Taraba", zone: "middle-belt" },
-  { id: "yobe", name: "Yobe", zone: "far-north" },
-  { id: "zamfara", name: "Zamfara", zone: "far-north" },
+  // North West
+  { id: "jigawa", name: "Jigawa", zone: "north-west" },
+  { id: "kaduna", name: "Kaduna", zone: "north-west" },
+  { id: "kano", name: "Kano", zone: "north-west" },
+  { id: "katsina", name: "Katsina", zone: "north-west" },
+  { id: "kebbi", name: "Kebbi", zone: "north-west" },
+  { id: "sokoto", name: "Sokoto", zone: "north-west" },
+  { id: "zamfara", name: "Zamfara", zone: "north-west" },
+
+  // North East
+  { id: "adamawa", name: "Adamawa", zone: "north-east" },
+  { id: "bauchi", name: "Bauchi", zone: "north-east" },
+  { id: "borno", name: "Borno", zone: "north-east" },
+  { id: "gombe", name: "Gombe", zone: "north-east" },
+  { id: "taraba", name: "Taraba", zone: "north-east" },
+  { id: "yobe", name: "Yobe", zone: "north-east" },
+
+  // North Central
+  { id: "benue", name: "Benue", zone: "north-central" },
+  { id: "fct", name: "FCT — Abuja", zone: "north-central" },
+  { id: "kogi", name: "Kogi", zone: "north-central" },
+  { id: "kwara", name: "Kwara", zone: "north-central" },
+  { id: "nasarawa", name: "Nasarawa", zone: "north-central" },
+  { id: "niger", name: "Niger", zone: "north-central" },
+  { id: "plateau", name: "Plateau", zone: "north-central" },
+
+  // South West
+  { id: "ekiti", name: "Ekiti", zone: "south-west" },
+  { id: "lagos", name: "Lagos", zone: "south-west" },
+  { id: "ogun", name: "Ogun", zone: "south-west" },
+  { id: "ondo", name: "Ondo", zone: "south-west" },
+  { id: "osun", name: "Osun", zone: "south-west" },
+  { id: "oyo", name: "Oyo", zone: "south-west" },
+
+  // South East
+  { id: "abia", name: "Abia", zone: "south-east" },
+  { id: "anambra", name: "Anambra", zone: "south-east" },
+  { id: "ebonyi", name: "Ebonyi", zone: "south-east" },
+  { id: "enugu", name: "Enugu", zone: "south-east" },
+  { id: "imo", name: "Imo", zone: "south-east" },
+
+  // South South
+  { id: "akwa-ibom", name: "Akwa Ibom", zone: "south-south" },
+  { id: "bayelsa", name: "Bayelsa", zone: "south-south" },
+  { id: "cross-river", name: "Cross River", zone: "south-south" },
+  { id: "delta", name: "Delta", zone: "south-south" },
+  { id: "edo", name: "Edo", zone: "south-south" },
+  { id: "rivers", name: "Rivers", zone: "south-south" },
 ];
 
-/** Falls back to the Lagos/southern-inland figure for an unknown state. */
+/** Falls back to Lagos's figure, which is where most enquiries come from. */
 export function pshForState(stateId: string): number {
-  const state = STATES.filter((s) => s.id === stateId)[0];
-  return state ? ZONES[state.zone].psh : ZONES["south-inland"].psh;
+  return zoneForState(stateId).psh;
 }
 
 export function zoneForState(stateId: string): Zone {
   const state = STATES.filter((s) => s.id === stateId)[0];
-  return state ? ZONES[state.zone] : ZONES["south-inland"];
+  return state ? ZONES[state.zone] : ZONES["south-west"];
 }

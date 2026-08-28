@@ -1,6 +1,6 @@
 import logo from "../../assets/caesar_dark.png";
 import { AuditResult } from "../../lib/solar/audit";
-import { STATES } from "../../lib/solar/locations";
+import { STATES, zoneForState } from "../../lib/solar/locations";
 import { paygDeposit, paygMonthly, packageArrayKwp } from "../../lib/solar/packages";
 import { UsageProfile } from "../../lib/solar/sizing";
 
@@ -59,7 +59,8 @@ export default function AuditSheet({
         <div className="text-right text-[8pt] text-gray-600">
           <div>{new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</div>
           <div>
-            {state ? state.name : profile.stateId} · {requirement.psh} peak sun hours
+            {state ? state.name : profile.stateId} ({zoneForState(profile.stateId).label}) ·{" "}
+            {requirement.psh} peak sun hours
           </div>
         </div>
       </div>

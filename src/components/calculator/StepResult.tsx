@@ -108,7 +108,7 @@ export default function StepResult({
         <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Based on {load.dailyKwh.toFixed(1)} kWh a day across {load.lines.length}{" "}
           {load.lines.length === 1 ? "appliance" : "appliance types"}, at{" "}
-          {requirement.psh} peak sun hours for the {zone.label.toLowerCase()}.
+          {requirement.psh} peak sun hours for the {zone.label}.
         </p>
       </div>
 
