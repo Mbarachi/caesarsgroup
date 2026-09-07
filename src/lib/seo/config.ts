@@ -14,9 +14,9 @@ export const SITE = {
   origin: "https://caesarsgroup.ng",
   locale: "en_NG",
   email: "info@caesarsgroup.ng",
-  phone: "+2348164046861",
-  phoneDisplay: "+234 816 404 6861",
-  whatsapp: "+353830095716",
+  phone: "+2348106282828",
+  phoneDisplay: "+234 810 628 2828",
+  whatsapp: "+2348106282828",
   address: {
     street: "5th Avenue, K Close, Festac Town",
     locality: "Lagos",
@@ -54,7 +54,7 @@ export const PAGES: PageSeo[] = [
     path: "/",
     title: "Solar Installation & Inverter Systems in Lagos | Caesars Energy",
     description:
-      "Caesars Energy Services designs and installs solar power systems for homes and businesses across Nigeria. Packages from ₦1,955,750, or 30% down with pay-as-you-go.",
+      "Caesars Energy Services designs and installs solar power systems for homes and businesses across Nigeria. Packages from ₦2,100,500, or 50% down with pay-as-you-go.",
     keywords: [
       "solar installation Lagos",
       "solar company Nigeria",
@@ -132,7 +132,7 @@ export const PAGES: PageSeo[] = [
     path: "/contact",
     title: "Contact Caesars Energy Services — Festac Town, Lagos",
     description:
-      "Talk to our solar team in Festac Town, Lagos. Call +234 816 404 6861, email info@caesarsgroup.ng, or message us on WhatsApp to book a free site survey.",
+      "Talk to our solar team in Festac Town, Lagos. Call +234 810 628 2828, email info@caesarsgroup.ng, or message us on WhatsApp to book a free site survey.",
     keywords: [
       "contact solar company Lagos",
       "solar installer near me Lagos",
@@ -175,6 +175,13 @@ export function seoForPath(pathname: string): PageSeo {
   const clean = pathname.replace(/\/+$/, "") || "/";
   return PAGES.filter((p) => p.path === clean)[0] || PAGES[0];
 }
+
+/**
+ * The WhatsApp deep link, built from SITE.whatsapp so the button can never
+ * point at a number the rest of the site has stopped using. wa.me takes digits
+ * only — no plus, no spaces.
+ */
+export const WHATSAPP_URL = `https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`;
 
 export const absoluteUrl = (path: string) =>
   `${SITE.origin}${path === "/" ? "/" : path.replace(/\/+$/, "")}`;

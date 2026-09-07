@@ -13,8 +13,7 @@ import {
 import { AuditResult } from "../../lib/solar/audit";
 import { UsageProfile } from "../../lib/solar/sizing";
 import { STATES } from "../../lib/solar/locations";
-
-const WHATSAPP = "https://wa.me/353830095716";
+import { WHATSAPP_URL } from "../../lib/seo/config";
 
 const BUDGETS = [
   "Under ₦2,000,000",
@@ -80,7 +79,7 @@ export default function LeadForm({
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild size="lg" className="font-bold">
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="h-5 w-5 mr-2" />
               Talk to us on WhatsApp now
             </a>
@@ -184,7 +183,7 @@ export default function LeadForm({
             {state.submitting ? "Sending…" : "Send my audit"}
           </Button>
           <Button asChild variant="outline" size="lg" className="flex-1">
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="h-5 w-5 mr-2" />
               WhatsApp instead
             </a>

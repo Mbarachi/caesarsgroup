@@ -1,4 +1,4 @@
-import { PAGES, SITE, absoluteUrl, seoForPath } from "./config";
+import { PAGES, SITE, WHATSAPP_URL, absoluteUrl, seoForPath } from "./config";
 import { breadcrumbSchema, organizationSchema, schemasForPath } from "./structuredData";
 
 /**
@@ -49,6 +49,14 @@ describe("page metadata", () => {
     expect(seoForPath("/services/").path).toBe("/services");
   });
 
+  it("points WhatsApp at the same Nigerian line the site advertises", () => {
+    // These drifted apart once already: the phone number was updated and the
+    // WhatsApp button kept pointing at an old one.
+    expect(SITE.whatsapp).toBe(SITE.phone);
+    expect(WHATSAPP_URL).toBe("https://wa.me/2348106282828");
+    expect(WHATSAPP_URL).not.toContain("+");
+  });
+
   it("builds canonical URLs on the canonical origin", () => {
     expect(absoluteUrl("/")).toBe("https://caesarsgroup.ng/");
     expect(absoluteUrl("/services")).toBe("https://caesarsgroup.ng/services");
@@ -66,7 +74,9 @@ describe("structured data", () => {
     expect(org.address.addressCountry).toBe("NG");
     expect(org.geo.latitude).toBeCloseTo(6.4667975, 5);
     expect(org.geo.longitude).toBeCloseTo(3.2760079, 5);
-    expect(org.telephone).toMatch(/^\+234/);
+    // Must match the Google Business Profile exactly, or the two weaken
+    // each other rather than reinforcing.
+    expect(org.telephone).toBe("+2348106282828");
   });
 
   it("lists the real packages with real prices", () => {

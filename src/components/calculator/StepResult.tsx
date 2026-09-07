@@ -137,7 +137,7 @@ export default function StepResult({
                 then {naira(paygMonthly(recommended))} a month for 12 months
               </div>
               <p className="mt-4 text-sm opacity-80">
-                30% deposit, balance spread over a year at 0–1% on the remainder.
+                50% deposit, balance spread over a year at 0–1% on the remainder.
               </p>
             </div>
 

@@ -1,4 +1,5 @@
 import { runAudit } from "./audit";
+import { PACKAGES_BY_SIZE, paygDeposit, paygMonthly } from "./packages";
 import {
   ApplianceSelection,
   UsageProfile,
@@ -178,6 +179,29 @@ describe("runAudit", () => {
     const result = runAudit(threeBedroom, lagosBackup);
     const fit = result.fits.filter((f) => f.pkg.id === result.recommended!.id)[0];
     expect(fit.shortfalls).toEqual({ inverter: false, battery: false, array: false });
+  });
+});
+
+describe("pay-as-you-go terms", () => {
+  it("takes half the package fee up front", () => {
+    PACKAGES_BY_SIZE.forEach((pkg) => {
+      expect(paygDeposit(pkg)).toBe(Math.round(pkg.priceNaira * 0.5));
+    });
+  });
+
+  it("spreads the remaining half across twelve months", () => {
+    PACKAGES_BY_SIZE.forEach((pkg) => {
+      const total = paygDeposit(pkg) + paygMonthly(pkg) * 12;
+      // Rounding to whole naira leaves at most a few naira of drift.
+      expect(Math.abs(total - pkg.priceNaira)).toBeLessThan(12);
+    });
+  });
+
+  it("quotes the Economy package at the figures on the flyer", () => {
+    const economy = PACKAGES_BY_SIZE.filter((p) => p.id === "economy")[0];
+    expect(economy.priceNaira).toBe(2_100_500);
+    expect(paygDeposit(economy)).toBe(1_050_250);
+    expect(paygMonthly(economy)).toBe(87_521);
   });
 });
 

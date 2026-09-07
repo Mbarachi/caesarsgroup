@@ -157,7 +157,7 @@ It is separate from the website and often matters more for local enquiries.
    *Solar panel installation*, *Electrician*, *Energy equipment and solutions*.
 4. Address: **5th Avenue, K Close, Festac Town, Festac 1, 102102, Lagos**.
 5. Service area: Lagos and any other states you install in.
-6. Phone **+234 816 404 6861** and website **https://caesarsgroup.ng** —
+6. Phone **+234 810 628 2828** and website **https://caesarsgroup.ng** —
    these must match the site character for character. Google cross-checks them
    against the LocalBusiness structured data the site now publishes, and
    mismatches weaken both.

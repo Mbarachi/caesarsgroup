@@ -46,7 +46,7 @@ export const PACKAGES: SolarPackage[] = [
     title: "Solar System\nPackage",
     capacity: "5KVA",
     batteries:
-      "10kwh lithium battery\n8 Bifacial crystalline solar panels\nWall mounted 6kva Hybrid Inverter\nBattery Rack/Accessories",
+      "10kwh lithium battery\n8 Bifacial crystalline solar panels\nWall mounted 5kva Hybrid Inverter\nBattery Rack/Accessories",
     willPower: [
       "Refrigerator",
       "Lights, fans, T.Vs",
@@ -55,15 +55,14 @@ export const PACKAGES: SolarPackage[] = [
     ],
     backupTime: "12-14 hours backup time",
     idealFor: "Ideal for 4-5 bedroom space",
-    price: "₦3,960,000",
+    price: "₦4,069,000",
     theme: {
       from: "from-[#FF715D]",
       to: "to-[#F63D2F]",
       accent: "bg-[#FFEEE9]",
     },
-    priceNaira: 3_960_000,
-    // Flyer headlines the package as 5KVA; the supplied inverter is 6kva.
-    inverterKva: 6,
+    priceNaira: 4_069_000,
+    inverterKva: 5,
     // 10kWh lithium at 90% DoD.
     batteryUsableKwh: 9,
     panelCount: 8,
@@ -110,13 +109,13 @@ export const PACKAGES: SolarPackage[] = [
     ],
     backupTime: "8-10 hours backup time",
     idealFor: "Ideal for 2-3 bedroom space",
-    price: "₦1,955,750",
+    price: "₦2,100,500",
     theme: {
       from: "from-[#FDBA74]",
       to: "to-[#FB923C]",
       accent: "bg-[#FFF3E6]",
     },
-    priceNaira: 1_955_750,
+    priceNaira: 2_100_500,
     inverterKva: 3.5,
     // 2 × 200Ah × 12V = 4.8kWh nominal, usable at 50% DoD.
     batteryUsableKwh: 2.4,
@@ -135,8 +134,8 @@ export function packageArrayKwp(pkg: SolarPackage): number {
   return (pkg.panelCount * pkg.panelWatts) / 1000;
 }
 
-/** Deposit required to start on the Pay-As-You-Go plan (30% of package fee). */
-export const PAYG_DEPOSIT_FRACTION = 0.3;
+/** Deposit required to start on the Pay-As-You-Go plan (50% of package fee). */
+export const PAYG_DEPOSIT_FRACTION = 0.5;
 
 export function paygDeposit(pkg: SolarPackage): number {
   return Math.round(pkg.priceNaira * PAYG_DEPOSIT_FRACTION);

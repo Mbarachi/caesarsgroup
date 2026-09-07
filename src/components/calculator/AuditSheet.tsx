@@ -222,7 +222,7 @@ export default function AuditSheet({
       <div className="mt-4 pt-2 border-t-2 border-black text-[7.5pt] text-gray-700 flex justify-between gap-4">
         <div>
           <span className="font-semibold text-black">Caesars Energy Services</span> · Festac Town, Lagos ·
-          info@caesarsgroup.ng · +234 816 404 6861
+          info@caesarsgroup.ng · +234 810 628 2828
         </div>
         <div className="text-right shrink-0">
           Desk estimate from figures supplied.

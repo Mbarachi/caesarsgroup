@@ -1,4 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Linkedin } from "lucide-react";
+import WhatsAppIcon from "../components/icons/WhatsAppIcon";
+import { WHATSAPP_URL } from "../lib/seo/config";
 import { useForm, ValidationError } from "@formspree/react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -93,7 +95,7 @@ export default function Contact() {
                 </p>
                 <p className="flex items-center gap-3">
                   <Phone className="text-primary h-5 w-5" />
-                  <span>Phone: +234 816 404 6861, +353 83 009 5716</span>
+                  <span>Phone: +234 810 628 2828, +353 83 009 5716</span>
                 </p>
                 <p className="flex items-center gap-3">
                   <Mail className="text-primary h-5 w-5" />
@@ -131,14 +133,14 @@ export default function Contact() {
                   </a>
                   {/* WhatsApp */}
                   <a
-                    href="https://wa.me/353830095716"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Chat with us on WhatsApp"
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-sm hover:opacity-90 transition"
                     style={{ backgroundColor: "#25D366" }}
                   >
-                    <Phone className="h-5 w-5" />
+                    <WhatsAppIcon className="h-5 w-5" />
                   </a>
                 </div>
               </div>

@@ -71,9 +71,9 @@ describe("the calculator, driven as a user", () => {
     expect(
       screen.getByRole("heading", { name: /you need the 3\.5KVA package/i })
     ).toBeInTheDocument();
-    expect(screen.getAllByText("₦1,955,750").length).toBeGreaterThan(0);
-    // Pay-as-you-go deposit: 30% of ₦1,955,750.
-    expect(screen.getByText("₦586,725")).toBeInTheDocument();
+    expect(screen.getAllByText("₦2,100,500").length).toBeGreaterThan(0);
+    // Pay-as-you-go deposit: 50% of ₦2,100,500.
+    expect(screen.getByText("₦1,050,250")).toBeInTheDocument();
     expect(screen.getByText(/how it was sized/i)).toBeInTheDocument();
     expect(screen.getByText(/pays for itself in/i)).toBeInTheDocument();
   });
@@ -119,7 +119,7 @@ describe("the calculator, driven as a user", () => {
     expect(text).toContain("Energy Audit");
     expect(text).toContain("Caesars Energy Services");
     expect(text).toContain("3.5KVA");
-    expect(text).toContain("₦1,955,750");
+    expect(text).toContain("₦2,100,500");
     expect(text).toContain("Refrigerator");
     expect(text).toContain("LED Bulb");
     expect(text).toContain("info@caesarsgroup.ng");
