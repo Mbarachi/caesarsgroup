@@ -1,11 +1,24 @@
 {
   "short_name": "Caesars Energy",
-  "name": "Caesars Energy Services — Solar Power Systems in Nigeria",
+  "name": "Caesars Energy Services \u2014 Solar Power Systems in Nigeria",
   "description": "Solar power systems, street lighting and mini grids for homes and businesses across Nigeria.",
   "icons": [
-    { "src": "favicon.ico", "sizes": "64x64 32x32 24x24 16x16", "type": "image/x-icon" },
-    { "src": "logo192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },
-    { "src": "logo512.png", "type": "image/png", "sizes": "512x512" }
+    {
+      "src": "favicon.ico?v=2",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png?v=2",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png?v=2",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
   ],
   "start_url": "/",
   "scope": "/",

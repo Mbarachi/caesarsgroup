@@ -43,27 +43,34 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ── 5. Caching ───────────────────────────────────────────────────────────────
-# CRA fingerprints filenames in /static, so those are safe to cache hard.
-# HTML must not be, or visitors keep seeing an old build.
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/png "access plus 6 months"
-  ExpiresByType image/jpeg "access plus 6 months"
-  ExpiresByType image/svg+xml "access plus 6 months"
-  ExpiresByType image/webp "access plus 6 months"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType text/html "access plus 0 seconds"
-</IfModule>
-
+# Two different rules, and the distinction matters.
+#
+# Files under /static carry a content hash in the name (main.3ee211df.js), so a
+# changed file is a different URL and can be cached forever.
+#
+# Files at the web root keep their names between builds — favicon.ico,
+# logo192.png, logo512.png, hero_image.png. Caching those as "immutable" pins a
+# stale icon in every browser and proxy that ever fetched one, which is exactly
+# how a replaced favicon appears not to have changed.
+#
+# Apache applies the LAST matching Header directive, so the long-lived rule is
+# written after the short-lived one deliberately.
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|woff2|png|jpg|jpeg|svg|webp)$">
+  # Default for static assets: a day, and revalidate after that.
+  <FilesMatch "\.(css|js|woff2|woff|ttf|png|jpg|jpeg|gif|svg|webp|ico)$">
+    Header set Cache-Control "public, max-age=86400, must-revalidate"
+  </FilesMatch>
+
+  # Fingerprinted build output only — safe to pin for a year.
+  <FilesMatch "\.[0-9a-f]{8}\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+
+  # HTML must always be revalidated, or visitors keep seeing an old build.
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
+
   Header set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
